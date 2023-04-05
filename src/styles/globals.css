@@ -78,89 +78,82 @@
 
 /* App Themes */
 
-/* Karla */
-/* karla-regular - latin */
 @font-face {
-  font-family: "Karla";
+  font-family: 'DomaineText-Regular';
+  src: url('/fonts/domaine-text-black.woff2') format('woff2');
+  font-weight: 900;
   font-style: normal;
-  font-weight: 400;
-  src: local(""),
-    url("/fonts/karla/karla-v23-latin-regular.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("/fonts/karla/karla-v23-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-display: block;
 }
 
-/* karla-500 - latin */
 @font-face {
-  font-family: "Karla";
-  font-style: normal;
-  font-weight: 500;
-  src: local(""), url("/fonts/karla/karla-v23-latin-500.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("/fonts/karla/karla-v23-latin-500.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-family: 'DomaineText-Regular';
+  src: url('/fonts/domaine-text-black-italic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+  font-display: block;
 }
 
-/* karla-600 - latin */
 @font-face {
-  font-family: "Karla";
-  font-style: normal;
-  font-weight: 600;
-  src: local(""), url("/fonts/karla/karla-v23-latin-600.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("/fonts/karla/karla-v23-latin-600.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* karla-700 - latin */
-@font-face {
-  font-family: "Karla";
-  font-style: normal;
+  font-family: 'DomaineText-Regular';
+  src: url('/fonts/domaine-text-bold-italic.woff2') format('woff2');
   font-weight: 700;
-  src: local(""), url("/fonts/karla/karla-v23-latin-700.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("/fonts/karla/karla-v23-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-style: italic;
+  font-display: block;
 }
 
-/* karla-italic - latin */
 @font-face {
-  font-family: "Karla";
-  font-style: italic;
-  font-weight: 400;
-  src: local(""),
-    url("/fonts/karla/karla-v23-latin-italic.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("/fonts/karla/karla-v23-latin-italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* karla-500italic - latin */
-@font-face {
-  font-family: "Karla";
-  font-style: italic;
-  font-weight: 500;
-  src: local(""),
-    url("/fonts/karla/karla-v23-latin-500italic.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("/fonts/karla/karla-v23-latin-500italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* karla-700italic - latin */
-@font-face {
-  font-family: "Karla";
-  font-style: italic;
+  font-family: 'DomaineText-Regular';
+  src: url('/fonts/domaine-text-bold.woff2') format('woff2');
   font-weight: 700;
-  src: local(""),
-    url("/fonts/karla/karla-v23-latin-700italic.woff2") format("woff2"),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url("/fonts/karla/karla-v23-latin-700italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-style: normal;
+  font-display: block;
 }
 
-/* space-mono-regular - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: "Space Mono";
+  font-family: 'DomaineText-Regular';
+  src: url('/fonts/domaine-text-medium.woff2') format('woff2');
+  font-weight: 500;
   font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('/fonts/domaine-text-medium-italic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('/fonts/domaine-text-regular-italic.woff2') format('woff2');
   font-weight: 400;
-  src: url("/fonts/space_mono/space-mono-v12-latin-regular.woff2")
-      format("woff2"),
-    /* Chrome 36+, Opera 23+, Firefox 39+ */
-      url("/fonts/space_mono/space-mono-v12-latin-regular.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('/fonts/domaine-text-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('/fonts/domaine-text-light-italic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'DomaineText-Regular';
+  src: url('/fonts/domaine-text-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: block;
 }

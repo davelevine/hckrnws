@@ -51,7 +51,7 @@ const Comment: React.FC<Props> = (props: Props) => {
         >
           <div className="flex justify-between">
             <span
-              className={`text-xs text-secondary font-mono py-1 px-2 rounded flex items-center ${
+              className={`text-xs text-secondary font-serif py-1 px-2 rounded flex items-center ${
                 isCommenterOP ? "bg-op" : "bg-secondary"
               }`}
             >
@@ -70,7 +70,7 @@ const Comment: React.FC<Props> = (props: Props) => {
                   <ClipboardIcon className="h-3 w-3 text-icon mr-2 group-hover:text-primary" />
                 </button>
               )}
-              <span className="py-0.5 px-1.5 text-secondary font-mono bg-tertiary rounded text-[10px]">
+              <span className="py-0.5 px-1.5 text-secondary font-serif bg-tertiary rounded text-[10px]">
                 {comments_count}
               </span>
               <button
@@ -96,7 +96,7 @@ const Comment: React.FC<Props> = (props: Props) => {
           {!deleted && (
             <div className="flex justify-between mb-2">
               <span
-                className={`text-xs text-secondary font-mono py-1 px-2 rounded flex items-center ${
+                className={`text-xs text-secondary font-serif py-1 px-2 rounded flex items-center ${
                   isCommenterOP ? "bg-op" : "bg-secondary"
                 }`}
               >
@@ -115,7 +115,7 @@ const Comment: React.FC<Props> = (props: Props) => {
                     <ClipboardIcon className="h-3 w-3 text-icon mr-2 group-hover:text-primary" />
                   </button>
                 )}
-                <span className="text-secondary font-mono text-[10px]">
+                <span className="text-secondary font-serif text-[10px]">
                   {prettyTime(time)}
                 </span>
                 <button
@@ -128,7 +128,7 @@ const Comment: React.FC<Props> = (props: Props) => {
             </div>
           )}
           {deleted ? (
-            <p className="font-mono text-secondary text-sm">
+            <p className="font-serif text-secondary text-sm">
               Comment was deleted :(
             </p>
           ) : (

@@ -45,7 +45,7 @@ const StoryListItem: React.FC<Props> = (props: Props) => {
     <div className="py-2 flex flex-col w-full bg-transparent mb-2 duration-100 border-b border-primary hover:border-secondary">
       <Link href={`/stories/${id}`} passHref>
         <h3
-          className={`text-base text-secondary whitespace-pre-line font-medium duration-100 cursor-pointer font-sans hover:text-primary`}
+          className={`text-base text-secondary whitespace-pre-line font-medium duration-100 cursor-pointer font-serif hover:text-primary`}
         >
           {decode(title)}{" "}
         </h3>
@@ -55,7 +55,7 @@ const StoryListItem: React.FC<Props> = (props: Props) => {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs whitespace-nowrap font-normal mb-0.5 border-b hover:text-primary border-primary w-fit font-mono text-secondary mt-0.5"
+          className="text-xs whitespace-nowrap font-normal mb-0.5 border-b hover:text-primary border-primary w-fit font-serif text-secondary mt-0.5"
         >
           ({domain})
         </a>
@@ -78,7 +78,7 @@ const StoryListItem: React.FC<Props> = (props: Props) => {
               isStoryStarred ? "text-amber-400" : "text-icon"
             }`}
           />
-          <span className="text-xs ml-1 text-secondary font-sans">
+          <span className="text-xs ml-1 text-secondary font-serif">
             {isStoryStarred ? "Starred" : "Star"}
           </span>
         </button>

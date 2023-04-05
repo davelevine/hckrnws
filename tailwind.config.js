@@ -11,9 +11,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        system: defaultTheme.fontFamily.sans,
-        sans: ["Karla", ...defaultTheme.fontFamily.sans],
-        mono: ["Space Mono", ...defaultTheme.fontFamily.mono],
+        system: defaultTheme.fontFamily.serif,
+        serif: ["DomaineText-Regular", ...defaultTheme.fontFamily.serif],
       },
       textColor: {
         primary: "var(--color-text-primary)",
