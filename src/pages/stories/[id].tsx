@@ -153,7 +153,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const ITEM_BASE_URL = "https://api.hnpwa.com/v0/item";
 
-  const fetchUrl = `${ITEM_BASE_URL}/${id}.json`;
+  const fetchUrl = `${ITEM_BASE_URL}/1.json`;
 
   const response = await fetch(fetchUrl);
   const errorCode = response.ok ? false : response.status;
