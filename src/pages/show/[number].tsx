@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const number = params?.number || 1;
 
   const BASE_URL = "https://api.hnpwa.com/v0/show";
-  const fetchUrl = `${BASE_URL}/1.json`;
+  const fetchUrl = `${BASE_URL}/${number}.json`;
 
   const response = await fetch(fetchUrl);
   const errorCode = response.ok ? false : response.status;
@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
-  const paths = [...Array(2)].map((x, idx) => ({
+  const paths = [...Array(1)].map((x, idx) => ({
     params: { number: (idx + 1).toString() },
   }));
 

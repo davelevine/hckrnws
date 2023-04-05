@@ -94,12 +94,12 @@ const Story: NextPage<Props> = (props: Props) => {
           onClick={onClickBack}
         >
           <BackIcon className="w-3 h-3 text-icon group-hover:text-primary" />
-          <span className="text-xs ml-1 font-serif text-secondary group-hover:text-primary">
+          <span className="text-xs ml-1 font-mono text-secondary group-hover:text-primary">
             Back
           </span>
         </button>
         <div className="flex flex-col p-4 bg-primary border border-primary rounded">
-          <h2 className="text-lg md:text-xl font-medium text-primary m-0 mb-1 font-serif">
+          <h2 className="text-lg md:text-xl font-medium text-primary m-0 mb-1 font-sans">
             {decode(title)}
           </h2>
           <div className="flex items-center">
@@ -108,7 +108,7 @@ const Story: NextPage<Props> = (props: Props) => {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs mr-3  max-w-[128px] md:max-w-full truncate md:whitespace-normal md:overflow-visible font-normal mb-0.5 border-b hover:text-primary border-primary w-fit font-serif text-secondary mt-0.5"
+                className="text-xs mr-3  max-w-[128px] md:max-w-full truncate md:whitespace-normal md:overflow-visible font-normal mb-0.5 border-b hover:text-primary border-primary w-fit font-mono text-secondary mt-0.5"
               >
                 ({domain})
               </a>
@@ -123,7 +123,7 @@ const Story: NextPage<Props> = (props: Props) => {
             />
           </div>
           <div className="flex items-center justify-between mt-0.5">
-            <p className="text-xs ml-0.5 text-secondary font-normal font-serif">
+            <p className="text-xs ml-0.5 text-secondary font-normal font-sans">
               by <span className="font-semibold text-primary">{user}</span>
             </p>
             <button
@@ -135,7 +135,7 @@ const Story: NextPage<Props> = (props: Props) => {
                   isStoryStarred ? "text-amber-400" : "text-icon"
                 }`}
               />
-              <span className="text-xs ml-1 text-secondary font-serif">
+              <span className="text-xs ml-1 text-secondary font-sans">
                 {isStoryStarred ? "Starred" : "Star"}
               </span>
             </button>
@@ -151,7 +151,7 @@ const Story: NextPage<Props> = (props: Props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
 
-  const ITEM_BASE_URL = "https://api.hnpwa.com/v0/item/1.json";
+  const ITEM_BASE_URL = "https://api.hnpwa.com/v0/item";
 
   const fetchUrl = `${ITEM_BASE_URL}/${id}.json`;
 
