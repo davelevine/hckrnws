@@ -21,7 +21,7 @@ export const CraftedBy = () => {
           rel="noreferrer noopener"
           className="hover:text-primary"
         >
-          Rajat
+          Dave
         </a>
       </p>
       <a
