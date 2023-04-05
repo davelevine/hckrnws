@@ -14,9 +14,9 @@ export const CraftedBy = () => {
   return (
     <div className="mt-auto flex justify-between items-center flex-none">
       <p className="text-xs text-secondary">
-        Crafted by{" "}
+        Forked by{" "}
         <a
-          href="https://rajatkulkarni.dev/"
+          href="https://dave.levine.org/"
           target="_blank"
           rel="noreferrer noopener"
           className="hover:text-primary"
@@ -25,7 +25,7 @@ export const CraftedBy = () => {
         </a>
       </p>
       <a
-        href="https://github.com/rajatkulkarni95/hckrnws"
+        href="https://github.com/davelevine/hckrnws"
         target="_blank"
         rel="noreferrer noopener"
         className="text-xs text-secondary hover:text-primary"

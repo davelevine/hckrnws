@@ -151,9 +151,9 @@ const Story: NextPage<Props> = (props: Props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
 
-  const ITEM_BASE_URL = "https://api.hnpwa.com/v0/item";
+  const ITEM_BASE_URL = "https://api.hnpwa.com/v0/item/1.json";
 
-  const fetchUrl = `${ITEM_BASE_URL}/1.json`;
+  const fetchUrl = `${ITEM_BASE_URL}/${id}.json`;
 
   const response = await fetch(fetchUrl);
   const errorCode = response.ok ? false : response.status;
