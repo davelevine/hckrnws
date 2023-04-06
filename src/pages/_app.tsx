@@ -14,7 +14,7 @@ function App({ Component, pageProps }: AppProps) {
     <ThemeProvider>
       <DefaultSeo {...defaultSEO} />
       <main className="mx-auto flex flex-col min-h-screen p-4 bg-primary w-full md:w-5/6 overflow-x-hidden xl:w-[900px] ">
-        <h1 className="hidden">hckrnws</h1>
+        <h1 className="hidden">Hacker News</h1>
         <Header />
         <Component {...pageProps} />
         <CraftedBy />

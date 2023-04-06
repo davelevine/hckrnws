@@ -1,8 +1,8 @@
 export const baseUrl =
-  process.env.NODE_ENV === "production" ? "https://hckrnws.com/" : "";
+  process.env.NODE_ENV === "production" ? "https://news.xdv.com/" : "";
 
 export const defaultSEO = {
-  title: "hckrnws",
+  title: "Hacker News",
   description: "hckrnws - A cleaner frontend for reading hackernews",
   openGraph: {
     type: "website",
