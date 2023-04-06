@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
   const number = params?.number || 1;
 
-  const BASE_URL = "https://hn.algolia.com/api/v1/items";
+  const BASE_URL = "http://hn.algolia.com/api/v1/items";
   const fetchUrl = `${BASE_URL}/${number}.json`;
 
   const response = await fetch(fetchUrl);

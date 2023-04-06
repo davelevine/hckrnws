@@ -151,7 +151,7 @@ const Story: NextPage<Props> = (props: Props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
 
-  const ITEM_BASE_URL = "https://hn.algolia.com/api/v1/items";
+  const ITEM_BASE_URL = "https://api.hnpwa.com/v0/item";
 
   const fetchUrl = `${ITEM_BASE_URL}/${id}.json`;
 
