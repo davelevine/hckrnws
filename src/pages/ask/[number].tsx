@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
   const number = params?.number || 1;
 
-  const BASE_URL = "https://api.hnpwa.com/v0/ask";
+  const BASE_URL = "https://api.xdv.com/ask";
   const fetchUrl = `${BASE_URL}/${number}.json`;
 
   const response = await fetch(fetchUrl);
