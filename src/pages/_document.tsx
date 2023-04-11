@@ -34,6 +34,7 @@ export default function Document() {
           content="#18181b"
           media="(prefers-color-scheme: dark)"
         />
+        <script defer data-domain="news.xdv.com" data-api="/data/api/event" src="/data/js/script.js"></script>
       </Head>
       <body className="antialiased bg-primary">
         <Main />
