@@ -151,9 +151,9 @@ const Story: NextPage<Props> = (props: Props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
 
-  const ITEM_BASE_URL = "https://api.xdv.com/item";
+  const ITEM_BASE_URL = "http://api.xdv.com/item";
 
-  const fetchUrl = `${ITEM_BASE_URL}/${id}.json`;
+  const fetchUrl = `${ITEM_BASE_URL}/${id}`;
 
   const response = await fetch(fetchUrl);
   const errorCode = response.ok ? false : response.status;

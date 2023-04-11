@@ -45,8 +45,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
   const number = params?.number || 1;
 
-  const BASE_URL = "https://api.xdv.com/ask";
-  const fetchUrl = `${BASE_URL}/${number}.json`;
+  const BASE_URL = "http://api.xdv.com/ask";
+  const fetchUrl = `${BASE_URL}`;
 
   const response = await fetch(fetchUrl);
   const errorCode = response.ok ? false : response.status;
