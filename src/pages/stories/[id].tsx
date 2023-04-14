@@ -85,7 +85,7 @@ const Story: NextPage<Props> = (props: Props) => {
   return (
     <Fragment>
       <Head>
-        <title>{decode(title)} - hckrnws</title>
+        <title>{decode(title)} - Hacker News</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="flex flex-col flex-1">

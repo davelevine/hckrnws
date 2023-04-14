@@ -8,11 +8,11 @@ export const defaultSEO = {
     type: "website",
     locale: "en_US",
     url: baseUrl,
-    site_name: "hckrnws",
+    site_name: "Hacker News",
     images: [
       {
         url: `${baseUrl}/img/og/default.png`,
-        alt: "hckrnws",
+        alt: "Hacker News",
       },
     ],
   },
