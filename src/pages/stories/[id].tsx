@@ -151,7 +151,7 @@ const Story: NextPage<Props> = (props: Props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
 
-  const ITEM_BASE_URL = "http://api.xdv.com/item";
+  const ITEM_BASE_URL = "http://api.hackerwebapp.com/item";
 
   const fetchUrl = `${ITEM_BASE_URL}/${id}`;
 
