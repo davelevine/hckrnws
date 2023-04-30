@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       fontFamily: {
         system: defaultTheme.fontFamily.serif,
-        serif: ['Lora', 'ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif', ...defaultTheme.fontFamily.serif],
+        serif: ['ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif', ...defaultTheme.fontFamily.serif],
       },
       textColor: {
         primary: "var(--color-text-primary)",
