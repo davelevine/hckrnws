@@ -51,7 +51,7 @@ const Comment: React.FC<Props> = (props: Props) => {
         >
           <div className="flex justify-between">
             <span
-              className={`text-xs text-secondary font-serif py-1 px-2 rounded flex items-center ${
+              className={`text-base text-secondary font-serif py-1 px-2 rounded flex items-center ${
                 isCommenterOP ? "bg-op" : "bg-secondary"
               }`}
             >
@@ -96,7 +96,7 @@ const Comment: React.FC<Props> = (props: Props) => {
           {!deleted && (
             <div className="flex justify-between mb-2">
               <span
-                className={`text-xs text-secondary font-serif py-1 px-2 rounded flex items-center ${
+                className={`text-base text-secondary font-serif py-1 px-2 rounded flex items-center ${
                   isCommenterOP ? "bg-op" : "bg-secondary"
                 }`}
               >
@@ -115,11 +115,11 @@ const Comment: React.FC<Props> = (props: Props) => {
                     <ClipboardIcon className="h-3 w-3 text-icon mr-2 group-hover:text-primary" />
                   </button>
                 )}
-                <span className="text-secondary font-serif text-[10px]">
+                <span className="text-secondary font-serif text-base">
                   {prettyTime(time)}
                 </span>
                 <button
-                  className="p-1 ml-2 group"
+                  className="p-2 ml-2 group"
                   onClick={() => setCollapsed(true)}
                 >
                   <ChevronUpIcon className="h-3 w-3 text-icon group-hover:text-primary" />
@@ -128,7 +128,7 @@ const Comment: React.FC<Props> = (props: Props) => {
             </div>
           )}
           {deleted ? (
-            <p className="font-serif text-secondary text-sm">
+            <p className="font-serif text-secondary text-base">
               Comment was deleted :(
             </p>
           ) : (

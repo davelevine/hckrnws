@@ -10,6 +10,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        'sm': '0.875rem',
+        'base': '0.975rem',
+        'lg': '1.125rem',
+        '2xl': '1.5rem',
+      },
       fontFamily: {
         system: defaultTheme.fontFamily.serif,
         serif: ["DomaineText-Regular", ...defaultTheme.fontFamily.serif],

@@ -22,21 +22,21 @@ const Dropdown = ({
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <button className="py-1 px-4 border max-w-[156px] outline-none rounded border-primary bg-secondary font-serif text-sm">
+        <button className="py-1 px-4 border max-w-[156px] outline-none rounded border-primary bg-secondary font-serif text-base">
           {triggerLabel}
         </button>
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className="shadow-sm bg-primary border border-primary rounded-md p-0.5 w-32"
+          className="shadow-sm bg-primary border border-primary rounded-md font-serif p-0.5 w-32"
           sideOffset={4}
           align="end"
         >
           {items?.map((item) => (
             <DropdownMenu.Item
               key={item.id}
-              className={`px-2 hover:bg-secondary flex items-center cursor-default py-1.5 mb-0.5 outline-none rounded group ring-0 text-sm hover:text-primary ${
+              className={`px-2 hover:bg-secondary flex items-center cursor-default py-1.5 mb-0.5 outline-none rounded group ring-0 text-base hover:text-primary ${
                 selectedId === item.id
                   ? "text-primary bg-secondary"
                   : "text-secondary bg-transparent"

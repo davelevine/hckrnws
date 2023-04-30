@@ -13,7 +13,7 @@ export const CenteredText = ({ children }: IProps) => {
 export const CraftedBy = () => {
   return (
     <div className="mt-auto flex justify-between items-center flex-none">
-      <p className="text-xs text-secondary">
+      <p className="text-base text-secondary">
         Forked by{" "}
         <a
           href="https://dave.levine.org/"
@@ -28,7 +28,7 @@ export const CraftedBy = () => {
         href="https://github.com/davelevine/hckrnws"
         target="_blank"
         rel="noreferrer noopener"
-        className="text-xs text-secondary hover:text-primary"
+        className="text-base text-secondary hover:text-primary"
       >
         Source Code
       </a>

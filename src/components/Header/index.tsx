@@ -69,7 +69,7 @@ const Header: React.FC = () => {
   const triggerLabel = () => (
     <div className="flex items-center">
       {selectedItem?.icon}
-      <span className="text-sm font-medium text-primary">
+      <span className="text-base font-medium text-primary">
         {selectedItem?.label || "Select"}
       </span>
     </div>
@@ -86,7 +86,7 @@ const Header: React.FC = () => {
   return (
     <div className="flex justify-between py-3 flex-none">
       <Link href="/">
-        <h2 className="text-xl md:text-2xl font-serif text-primary">Hacker News</h2>
+        <h2 className="text-2xl md:text-2xl font-serif text-primary">Hacker News</h2>
       </Link>
       <div className="flex items-center">
         <Dropdown
@@ -96,7 +96,7 @@ const Header: React.FC = () => {
           handleOnClick={handleOnClick}
         />
         <button
-          className="p-1.5 border border-primary bg-secondary ml-2 hover:bg-tertiary rounded"
+          className="p-2 border border-primary bg-secondary ml-2 hover:bg-tertiary rounded"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           type="button"
           aria-label="Toggle Theme"
