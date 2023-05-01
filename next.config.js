@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  swcMinify: true,
+  swcMinify: false,
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({

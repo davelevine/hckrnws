@@ -96,7 +96,7 @@ const Comment: React.FC<Props> = (props: Props) => {
           {!deleted && (
             <div className="flex justify-between mb-2">
               <span
-                className={`text-base text-secondary font-serif py-1 px-2 rounded flex items-center ${
+                className={`text-sm text-secondary font-serif py-1 px-2 rounded flex items-center ${
                   isCommenterOP ? "bg-op" : "bg-secondary"
                 }`}
               >

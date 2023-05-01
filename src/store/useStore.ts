@@ -1,4 +1,4 @@
-import create, { GetState, SetState, State, StoreApi } from "zustand";
+import { create, GetState, SetState, State, StoreApi } from "zustand";
 
 import createStarSlice, { StarSlice } from "./createStarSlice";
 

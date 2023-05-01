@@ -1,26 +1,29 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: false,
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
+  mode: "jit",
+  purge: [
+    "./public/**/*.html",
+    "./src/**/*.{js,jsx,ts,tsx,vue}",
   ],
+  media: false, // or 'media' or 'class'
   theme: {
     extend: {
-      fontSize: {
-        'sm': '0.875rem',
-        'base': '0.975rem',
-        'lg': '1.125rem',
-        '2xl': '1.5rem',
-      },
       fontFamily: {
-        system: defaultTheme.fontFamily.serif,
-        serif: ["DomaineText-Regular", ...defaultTheme.fontFamily.serif],
+        serif: ["DomaineText-Regular", "serif"],
       },
-      textColor: {
+      fontSize: {
+        sm: "0.875rem",
+        base: "1rem",
+        lg: "1.125rem",
+        xl: "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem",
+        "4xl": "2.25rem",
+        "5xl": "3rem",
+        "6xl": "4rem",
+      },
+      colors: {
         primary: "var(--color-text-primary)",
         secondary: "var(--color-text-secondary)",
         tertiary: "var(--color-text-tertiary)",
@@ -28,7 +31,16 @@ module.exports = {
         code: "var(--color-text-code)",
         btn: "var(--color-text-btn)",
         link: "var(--color-text-link)",
-        ...colors,
+        transparent: "transparent",
+        current: "currentColor",
+        gray: colors.neutral,
+        red: colors.red,
+        yellow: colors.amber,
+        green: colors.green,
+        blue: colors.blue,
+        indigo: colors.indigo,
+        purple: colors.violet,
+        pink: colors.pink,
       },
       backgroundColor: {
         primary: "var(--color-bg-primary)",
@@ -39,14 +51,35 @@ module.exports = {
         tooltip: "var(--color-bg-tooltip)",
         op: "var(--color-bg-op)",
         btn: "var(--color-bg-btn)",
-        ...colors,
+        transparent: "transparent",
+        current: "currentColor",
+        gray: colors.neutral,
+        red: colors.red,
+        yellow: colors.amber,
+        green: colors.green,
+        blue: colors.blue,
+        indigo: colors.indigo,
+        purple: colors.violet,
+        pink: colors.pink,
       },
       borderColor: {
         primary: "var(--color-border-primary)",
         secondary: "var(--color-border-secondary)",
-        ...colors,
+        transparent: "transparent",
+        current: "currentColor",
+        gray: colors.neutral,
+        red: colors.red,
+        yellow: colors.amber,
+        green: colors.green,
+        blue: colors.blue,
+        indigo: colors.indigo,
+        purple: colors.violet,
+        pink: colors.pink,
       },
     },
+  },
+  variants: {
+    extend: {},
   },
   plugins: [],
 };
