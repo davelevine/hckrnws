@@ -1,5 +1,4 @@
 import { GetServerSideProps, NextPage } from "next";
-
 import { useRouter } from "next/router";
 import { TDetailedStory } from "~/types/story";
 import { Fragment, useEffect, useState } from "react";

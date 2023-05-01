@@ -24,7 +24,7 @@ const NewStoriesList: NextPage<PageProps> = (props: PageProps) => {
   return (
     <Fragment>
       <Head>
-        <title>New HN - Page {number}</title>
+        <title>{`New HN - Page ${number}`}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="flex-1">

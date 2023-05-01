@@ -24,7 +24,7 @@ const ShowStoriesList: NextPage<PageProps> = (props: PageProps) => {
   return (
     <Fragment>
       <Head>
-        <title>Show HN - Page {number}</title>
+        <title>{`Show HN - Page ${number}`}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="flex-1">
@@ -64,14 +64,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Get the paths we want to pre-render based on posts
-  const paths = [...Array(1)].map((x, idx) => ({
+  const BASE_URL = "http://api.xdv.com/show";
+  const fetchUrl = `${BASE_URL}`;
+
+  const response = await fetch(fetchUrl);
+  const data = await response.json();
+
+  const totalPages = Math.ceil(data.length / 30); // Assuming 30 items per page
+
+  const paths = [...Array(totalPages)].map((_, idx) => ({
     params: { number: (idx + 1).toString() },
   }));
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: 'blocking' } will server-render pages
-  // on-demand if the path doesn't exist.
   return { paths, fallback: "blocking" };
 };
 
