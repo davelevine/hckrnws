@@ -99,19 +99,11 @@ const Story: NextPage<Props> = (props: Props) => {
         </button>
         <div className="flex flex-col p-4 bg-primary border border-primary rounded">
           <h2 className="text-lg md:text-xl font-medium text-primary m-0 mb-1 font-serif">
-            {decode(title)}
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              {decode(title)}
+            </a>
           </h2>
           <div className="flex items-center">
-            {domain && (
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-base mr-3  max-w-[128px] md:max-w-full  md:whitespace-normal md:overflow-visible font-normal mb-0.5 border-b hover:text-primary border-primary w-fit font-serif text-secondary mt-0.5"
-              >
-                ({domain})
-              </a>
-            )}
             <Meta
               time={time}
               points={points}

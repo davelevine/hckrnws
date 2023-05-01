@@ -78,7 +78,7 @@ const StoryListItem: React.FC<Props> = (props: Props) => {
               isStoryStarred ? "text-amber-400" : "text-icon"
             }`}
           />
-          <span className="textbase ml-1 text-secondary font-serif">
+          <span className="text-base ml-1 text-secondary font-serif">
             {isStoryStarred ? "Starred" : "Star"}
           </span>
         </button>
