@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       data,
     },
 
-    revalidate: 1800, // In seconds
+    revalidate: 900, // In seconds
   };
 };
 
