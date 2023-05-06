@@ -11,6 +11,7 @@ const TopStoriesList: NextPage<PageProps> = (props: PageProps) => {
   const router = useRouter();
   const { number } = router.query;
   const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { data } = props;
 
   useEffect(() => {
@@ -19,17 +20,18 @@ const TopStoriesList: NextPage<PageProps> = (props: PageProps) => {
     }
   }, [data]);
 
+  const handlePageChange = (page: number) => {
+    setIsLoading(true);
+    router.push(`/top/${page}`);
+  };
+
   if (hasError) {
     return <CenteredText>Oops! Something went wrong :(</CenteredText>;
   }
 
-  if (!data) {
+  if (!data && !isLoading) {
     return <CenteredText>Loading...</CenteredText>;
   }
-
-  const handlePageChange = (page: number) => {
-    router.push(`/top/${page}`);
-  };
 
   return (
     <Fragment>
@@ -38,7 +40,7 @@ const TopStoriesList: NextPage<PageProps> = (props: PageProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="flex-1">
-        {data.map((story) => (
+        {data?.map((story) => (
           <StoryListItem story={story} key={story.id} />
         ))}
         <Pagination
