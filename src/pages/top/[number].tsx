@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from "next";
 import { PageProps } from "~/types/story";
 import StoryListItem from "~/components/StoryListItem";
 import Head from "next/head";
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Pagination from "~/components/Common/Pagination";
 import { CenteredText } from "~/components/Common/Fragments";
@@ -10,12 +10,22 @@ import { CenteredText } from "~/components/Common/Fragments";
 const TopStoriesList: NextPage<PageProps> = (props: PageProps) => {
   const router = useRouter();
   const { number } = router.query;
-  const { data, errorCode } = props;
+  const [hasError, setHasError] = useState(false);
+  const { data } = props;
 
-  if (errorCode)
+  useEffect(() => {
+    if (data && data.length === 0) {
+      setHasError(true);
+    }
+  }, [data]);
+
+  if (hasError) {
     return <CenteredText>Oops! Something went wrong :(</CenteredText>;
+  }
 
-  if (!data) return <CenteredText>Loading...</CenteredText>;
+  if (!data) {
+    return <CenteredText>Loading...</CenteredText>;
+  }
 
   const handlePageChange = (page: number) => {
     router.push(`/top/${page}`);
@@ -49,19 +59,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   try {
     const response = await fetch(fetchUrl);
-    const errorCode = response.ok ? false : response.status;
-    const data = errorCode === false ? await response.json() : [];
+    const data = await response.json();
 
     return {
       props: {
-        errorCode,
         data,
       },
     };
   } catch (error) {
     return {
       props: {
-        errorCode: (error as Error).message,
         data: [],
       },
     };

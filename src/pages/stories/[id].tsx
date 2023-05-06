@@ -13,13 +13,8 @@ import useStore from "~/store/useStore";
 import { decode } from "html-entities";
 import InnerHTMLText from "~/components/Common/InnerHTMLText";
 
-type Props = {
-  errorCode: false | number;
-};
-
-const Story: NextPage<Props> = (props: Props) => {
+const Story: NextPage = () => {
   const router = useRouter();
-  const { errorCode } = props;
   const [storyData, setStoryData] = useState<TDetailedStory | null>(null);
   const [isStoryStarred, setIsStoryStarred] = useState(false);
 
@@ -51,11 +46,11 @@ const Story: NextPage<Props> = (props: Props) => {
     }
   };
 
-useEffect(() => {
-  if (storyData) {
-    setIsStoryStarred(starred?.some((story) => story.id === storyData.id));
-  }
-}, [starred, storyData]);
+  useEffect(() => {
+    if (storyData) {
+      setIsStoryStarred(starred?.some((story) => story.id === storyData.id));
+    }
+  }, [starred, storyData]);
 
   useEffect(() => {
     const fetchStoryData = async () => {
@@ -67,10 +62,6 @@ useEffect(() => {
 
     fetchStoryData();
   }, [router.query]);
-
-  if (errorCode) {
-    return <div>Oops! Something went wrong :(</div>;
-  }
 
   if (!storyData) {
     return <div>Loading...</div>;

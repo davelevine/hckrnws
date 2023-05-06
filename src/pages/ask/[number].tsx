@@ -11,12 +11,14 @@ const AskStoriesList: NextPage<PageProps> = () => {
   const router = useRouter();
   const { number } = router.query;
   const [data, setData] = useState<PageProps["data"]>([]);
+  const [isLoading, setIsLoading] = useState(true); // Add new state variable
 
   useEffect(() => {
     const fetchStoryData = async () => {
       const response = await fetch(`https://api.xdv.com/ask?page=${number}`);
       const data = await response.json();
       setData(data);
+      setIsLoading(false); // Set isLoading to false after data is fetched
     };
 
     if (number) {
@@ -24,7 +26,7 @@ const AskStoriesList: NextPage<PageProps> = () => {
     }
   }, [number]);
 
-  if (!data) return <CenteredText>Loading...</CenteredText>;
+  if (isLoading) return <CenteredText>Loading...</CenteredText>; // Modify if condition
 
   if (data.length === 0)
     return <CenteredText>Oops! Something went wrong :(</CenteredText>;
