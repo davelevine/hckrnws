@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next";
+import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { TDetailedStory } from "~/types/story";
 import { Fragment, useEffect, useState } from "react";
@@ -14,13 +14,13 @@ import { decode } from "html-entities";
 import InnerHTMLText from "~/components/Common/InnerHTMLText";
 
 type Props = {
-  data: TDetailedStory;
   errorCode: false | number;
 };
 
 const Story: NextPage<Props> = (props: Props) => {
   const router = useRouter();
-  const { data, errorCode } = props;
+  const { errorCode } = props;
+  const [storyData, setStoryData] = useState<TDetailedStory | null>(null);
   const [isStoryStarred, setIsStoryStarred] = useState(false);
 
   const size: Size = useWindowSize();
@@ -31,14 +31,6 @@ const Story: NextPage<Props> = (props: Props) => {
   const { theme } = useTheme();
   const stroke = theme === "light" ? "#161618" : "#FFFFFF";
 
-  // if (errorCode)
-  //   return <CenteredText>Oops! Something went wrong :(</CenteredText>;
-
-  // if (!data) return <CenteredText>Loading...</CenteredText>;
-
-  const { title, id, points, user, time, content, comments, domain } = data;
-  let { url } = data;
-
   const onClickBack = () => {
     if (window.history.state && window.history.state.idx > 0) {
       router.back();
@@ -47,13 +39,44 @@ const Story: NextPage<Props> = (props: Props) => {
     }
   };
 
-  // If url links to a hackernews story, remove the params, so that it can route inside hckrnws
-  if (url.startsWith("item?id=")) {
-    url = url.replace("item?id=", "");
+  const isMobile = (size?.width ?? 641) < 640;
+
+  const handleStar = () => {
+    const isStoryStarred = starred?.some((story) => story.id === id);
+    if (isStoryStarred) {
+      const filteredStories = starred?.filter((story) => story.id !== id);
+      starStory(filteredStories);
+    } else {
+      starStory([...starred, story]);
+    }
+  };
+
+useEffect(() => {
+  if (storyData) {
+    setIsStoryStarred(starred?.some((story) => story.id === storyData.id));
+  }
+}, [starred, storyData]);
+
+  useEffect(() => {
+    const fetchStoryData = async () => {
+      const { id } = router.query;
+      const response = await fetch(`https://api.xdv.com/item/${id}`);
+      const data = await response.json();
+      setStoryData(data);
+    };
+
+    fetchStoryData();
+  }, [router.query]);
+
+  if (errorCode) {
+    return <div>Oops! Something went wrong :(</div>;
   }
 
-  // Assigning a number greater than the compared value, so that it defaults to false
-  const isMobile = (size?.width ?? 641) < 640;
+  if (!storyData) {
+    return <div>Loading...</div>;
+  }
+
+  const { title, id, points, user, time, content, comments, domain, url } = storyData;
 
   const story = {
     id,
@@ -65,21 +88,6 @@ const Story: NextPage<Props> = (props: Props) => {
     domain,
     comments_count: comments.length,
   };
-
-  const handleStar = () => {
-    // save them to the zustand store, which in turn will save to local storage
-    const isStoryStarred = starred?.some((story) => story.id === id);
-    if (isStoryStarred) {
-      const filteredStories = starred?.filter((story) => story.id !== id);
-      starStory(filteredStories);
-    } else {
-      starStory([...starred, story]);
-    }
-  };
-
-  useEffect(() => {
-    setIsStoryStarred(starred?.some((story) => story.id === id));
-  }, [starred, id]);
 
   return (
     <Fragment>
@@ -137,26 +145,6 @@ const Story: NextPage<Props> = (props: Props) => {
       </div>
     </Fragment>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id } = context.query;
-
-  const ITEM_BASE_URL = "https://api.xdv.com/item";
-
-  const fetchUrl = `${ITEM_BASE_URL}/${id}`;
-
-  const response = await fetch(fetchUrl);
-  const errorCode = response.ok ? false : response.status;
-  // Only run the json if the error is not present
-  const data = errorCode === false ? await response.json() : [];
-
-  return {
-    props: {
-      errorCode,
-      data,
-    },
-  };
 };
 
 export default Story;

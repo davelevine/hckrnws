@@ -1,21 +1,33 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { NextPage } from "next";
 import { PageProps } from "~/types/story";
 import StoryListItem from "~/components/StoryListItem";
 import Head from "next/head";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Pagination from "~/components/Common/Pagination";
 import { CenteredText } from "~/components/Common/Fragments";
 
-const ShowStoriesList: NextPage<PageProps> = (props: PageProps) => {
+const ShowStoriesList: NextPage<PageProps> = () => {
   const router = useRouter();
   const { number } = router.query;
-  const { data, errorCode } = props;
+  const [data, setData] = useState<PageProps["data"]>([]);
 
-  if (errorCode)
-    return <CenteredText>Oops! Something went wrong :(</CenteredText>;
+  useEffect(() => {
+    const fetchStoryData = async () => {
+      const response = await fetch(`https://api.xdv.com/show?page=${number}`);
+      const data = await response.json();
+      setData(data);
+    };
+
+    if (number) {
+      fetchStoryData();
+    }
+  }, [number]);
 
   if (!data) return <CenteredText>Loading...</CenteredText>;
+
+  if (data.length === 0)
+    return <CenteredText>Oops! Something went wrong :(</CenteredText>;
 
   const handlePageChange = (page: number) => {
     router.push(`/show/${page}`);
@@ -39,44 +51,6 @@ const ShowStoriesList: NextPage<PageProps> = (props: PageProps) => {
       </div>
     </Fragment>
   );
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { params } = context;
-  const number = params?.number || 1;
-
-  const BASE_URL = "https://api.xdv.com/show";
-  const fetchUrl = `${BASE_URL}`;
-
-  const response = await fetch(fetchUrl);
-  const errorCode = response.ok ? false : response.status;
-  // Only run the json if the error is not present
-  const data = errorCode === false ? await response.json() : [];
-
-  return {
-    props: {
-      errorCode,
-      data,
-    },
-
-    revalidate: 900, // In seconds
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const BASE_URL = "https://api.xdv.com/show";
-  const fetchUrl = `${BASE_URL}`;
-
-  const response = await fetch(fetchUrl);
-  const data = await response.json();
-
-  const totalPages = Math.ceil(data.length / 30); // Assuming 30 items per page
-
-  const paths = [...Array(totalPages)].map((_, idx) => ({
-    params: { number: (idx + 1).toString() },
-  }));
-
-  return { paths, fallback: true };
 };
 
 export default ShowStoriesList;

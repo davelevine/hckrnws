@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { PageProps } from "~/types/story";
 import StoryListItem from "~/components/StoryListItem";
 import Head from "next/head";
@@ -40,38 +40,32 @@ const TopStoriesList: NextPage<PageProps> = (props: PageProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params } = context;
   const number = params?.number || 1;
 
   const TOP_BASE_URL = "https://api.xdv.com/news";
-  const fetchUrl = `${TOP_BASE_URL}`;
+  const fetchUrl = `${TOP_BASE_URL}?page=${number}`;
 
-  const response = await fetch(fetchUrl);
-  const errorCode = response.ok ? false : response.status;
-  // Only run the json if the error is not present
-  const data = errorCode === false ? await response.json() : [];
+  try {
+    const response = await fetch(fetchUrl);
+    const errorCode = response.ok ? false : response.status;
+    const data = errorCode === false ? await response.json() : [];
 
-  return {
-    props: {
-      errorCode,
-      data,
-    },
-
-    revalidate: 900, // In seconds
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  // Get the paths we want to pre-render based on posts
-  const paths = [...Array(10)].map((x, idx) => ({
-    params: { number: (idx + 1).toString() },
-  }));
-
-  // We'll pre-render only these paths at build time.
-  // { fallback: true } will server-render pages
-  // on-demand if the path doesn't exist.
-  return { paths, fallback: true };
+    return {
+      props: {
+        errorCode,
+        data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        errorCode: (error as Error).message,
+        data: [],
+      },
+    };
+  }
 };
 
 export default TopStoriesList;
