@@ -1,11 +1,14 @@
 import { GetServerSideProps, NextPage } from "next";
 import { PageProps } from "~/types/story";
-import StoryListItem from "~/components/StoryListItem";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import { Fragment, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Pagination from "~/components/Common/Pagination";
 import { CenteredText } from "~/components/Common/Fragments";
+import Pagination from "~/components/Common/Pagination";
+
+// Dynamically import StoryListItem to enable code splitting
+const StoryListItem = dynamic(() => import("~/components/StoryListItem"));
 
 const TopStoriesList: NextPage<PageProps> = (props: PageProps) => {
   const router = useRouter();
