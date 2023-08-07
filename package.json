@@ -23,7 +23,7 @@
   "devDependencies": {
     "@svgr/webpack": "^7.0.0",
     "@types/node": "18.17.3",
-    "@types/react": "18.2.6",
+    "@types/react": "18.2.18",
     "autoprefixer": "^10.4.13",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",
